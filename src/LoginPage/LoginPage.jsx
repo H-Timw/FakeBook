@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 /* eslint-disable react/no-unescaped-entities */
 export default function LoginPage({isLogin}) {
   const [customGender, setCustomGender] = useState(false);
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState(''); 
   return (
     <div className="login-page">
       <div className="container mt-5 pt-5 d-flex flex-column flex-lg-row justify-content-evenly">
@@ -17,8 +19,18 @@ export default function LoginPage({isLogin}) {
             {/* login form */}
             {/* first was form tag */}
             <div className="bg-white shadow rounded p-3 input-group-lg">
-                <input type="email" className="form-control my-3" placeholder="Email address or phone number" />
-                <input type="password" className="form-control my-3" placeholder="Password" />
+                <input
+                  type="email"
+                  className="form-control my-3"
+                  placeholder="Email address or phone number"
+                  onChange={(e)=>setUserName(e.target.value)}
+                  />
+                <input
+                  type="password" 
+                  className="form-control my-3"
+                  placeholder="Password"
+                  onChange={(e)=>setPassword(e.target.value)}
+                  />
                 <button className="btn btn-primary w-100 my-3" onClick={()=>isLogin(true)}>Log In</button>
                 <a href="#" className="text-decoration-none text-center"><p>Forgotten password?</p></a>
                 {/* create form */}

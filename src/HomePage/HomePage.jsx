@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import Propose from "./HomePageSearch/Propose"
+
 export default function HomePage({isLogin}){
       return(
         <div className="bg-gray postion-relative">
@@ -4859,7 +4860,6 @@ export default function HomePage({isLogin}){
           className="
         d-none d-xxl-block
         h-100
-        fixed-top
         end-0
         overflow-hidden
         scrollbar
