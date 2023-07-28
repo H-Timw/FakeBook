@@ -14,13 +14,11 @@ export default function HomePage({isLogin,userLogin}){
     .then( res =>  res.json())
     .then( data => getUsers(data))
     .catch( err => console.error(err));
-    fetch('http://localhost:8080/user')
+    fetch('http://localhost:8080/post')
     .then( res =>  res.json())
     .then( data => getPosts(data))
     .catch( err => console.error(err));
   },[])
-
-
 
   return(
     <div className="bg-gray postion-relative">
@@ -4261,11 +4259,13 @@ export default function HomePage({isLogin,userLogin}){
             </div>
           </div>
           {/* posts */}
-          {/* p 1 -post */}
-          <Post/>
-          {/* p 2 */}
-          <Post/>
-          
+          {
+            posts && users && posts.map((post,index)=>{
+              return (
+                <Post key={index} {...{post}}/>
+              )
+            })
+          }
         </div>
       </div>
       {/* ================= Chatbar ================= */}

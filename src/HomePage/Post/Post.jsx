@@ -1,5 +1,6 @@
-
-export default function Post() {
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+export default function Post({post}) {
   return (
     <div className="bg-white p-4 rounded shadow mt-3">
             {/* author */}
@@ -7,14 +8,14 @@ export default function Post() {
               {/* avatar */}
               <div className="d-flex">
                 <img
-                  src="https://source.unsplash.com/collection/happy-people" //${avt}
+                  src={post.user.profilePicture} //${avt}
                   alt="avatar"
                   className="rounded-circle me-2"
                   style={{ width: 38, height: 38, objectFit: "cover" }}
                 />
                 <div>
-                  <p className="m-0 fw-bold">John</p>
-                  <span className="text-muted fs-7">July 17 at 1:23 pm</span>
+                  <p className="m-0 fw-bold" style={{textTransform:'capitalize'}}>{post.user.username.split(".").join(" ")}</p>
+                  <span className="text-muted fs-7">{post.createdAt}</span>
                 </div>
               </div>
               {/* edit */}
@@ -65,12 +66,10 @@ export default function Post() {
               {/* content */}
               <div>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae
-                  fuga incidunt consequatur tenetur doloremque officia corrupti
-                  provident tempore vitae labore?
+                  {post.content}
                 </p>
                 <img
-                  src="https://source.unsplash.com/random/12"
+                  src={post.postImage}
                   alt="post image"
                   className="img-fluid rounded"
                 />
