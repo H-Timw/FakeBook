@@ -7,7 +7,7 @@ export default function LoginPage({isLogin,setUserLogin}) {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const checkLogin = async function(){
-    await fetch(`http://localhost:8080/user/login`,{
+    await fetch(`http://localhost:8080/login`,{
         method: 'POST',
         body: JSON.stringify(
             {
