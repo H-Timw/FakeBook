@@ -1,11 +1,35 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 /* eslint-disable react/no-unescaped-entities */
-export default function LoginPage({isLogin}) {
+export default function LoginPage({isLogin,setUserLogin}) {
   const [customGender, setCustomGender] = useState(false);
   const [username, setUserName] = useState('');
-  const [password, setPassword] = useState(''); 
+  const [password, setPassword] = useState('');
+  const checkLogin = async function(){
+    await fetch(`http://localhost:8080/user/login`,{
+        method: 'POST',
+        body: JSON.stringify(
+            {
+                "username" : username,
+                "password" : password
+            }
+        ),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then( res => res.json())
+    .then(user => {
+            if(user!=null){
+                setUserLogin(user);
+                isLogin(true);
+            }else{
+                isLogin(false)
+            }
+        }
+    )
+    .catch(err=> console.log(err));
+  }
   return (
     <div className="login-page">
       <div className="container mt-5 pt-5 d-flex flex-column flex-lg-row justify-content-evenly">
@@ -31,7 +55,7 @@ export default function LoginPage({isLogin}) {
                   placeholder="Password"
                   onChange={(e)=>setPassword(e.target.value)}
                   />
-                <button className="btn btn-primary w-100 my-3" onClick={()=>isLogin(true)}>Log In</button>
+                <button className="btn btn-primary w-100 my-3" onClick={()=>checkLogin()}>Log In</button>
                 <a href="#" className="text-decoration-none text-center"><p>Forgotten password?</p></a>
                 {/* create form */}
                 <hr />

@@ -1,0 +1,36 @@
+.accordion{
+  padding-top: 50px !important;
+}
+.icons{
+  background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/y6/r/MXx87JcFKzH.png);
+  background-size: 38px 570px;
+  width: 36px;
+  height: 36px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.friend-icon{
+  background-position: 0px -304px;
+}
+.group-icon{
+  background-position: 0px -38px; 
+}
+.page-icon{
+  background-position: 0px -114px;
+}
+.marketplace-icon{
+  background-position: 0px -418px;
+}
+.watch-icon{
+  background-position: 0px -532px;
+}
+.event-icon{
+  background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/mruGO7HkgS-.png);
+  background-position: 0px 0px;
+  background-size: 38px 38px;
+}
+.newfeed-icon{
+  background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/3dN1QwOLden.png);
+  background-position: 0px 0px;
+  background-size: 38px 38px;
+}

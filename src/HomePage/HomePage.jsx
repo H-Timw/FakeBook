@@ -1,11 +1,29 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
 import Propose from "./HomePageSearch/Propose"
+import Post from "./Post/Post"
+import './HomePage.css'
 
-export default function HomePage({isLogin}){
-      return(
-        <div className="bg-gray postion-relative">
+export default function HomePage({isLogin,userLogin}){
+  const [posts, getPosts] = useState(null);
+  const [users, getUsers] = useState(null);
+  useEffect(()=>{
+    fetch('http://localhost:8080/user')
+    .then( res =>  res.json())
+    .then( data => getUsers(data))
+    .catch( err => console.error(err));
+    fetch('http://localhost:8080/user')
+    .then( res =>  res.json())
+    .then( data => getPosts(data))
+    .catch( err => console.error(err));
+  },[])
+
+
+
+  return(
+    <div className="bg-gray postion-relative">
   {/* ================= Appbar ================= */}
   <div
     className="bg-white d-flex align-items-center fixed-top shadow"
@@ -218,12 +236,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                    <i className="icons event-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Events</p>
@@ -246,12 +259,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                    <i className="icons friend-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Friends</p>
@@ -274,12 +282,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Im_0d7HFH4n.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                    <i className="icons group-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Groups</p>
@@ -302,12 +305,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yo/r/hLkEFzsCyXC.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                    <i className="icons newfeed-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">News Feed</p>
@@ -330,12 +328,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/0gH3vbvr8Ee.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                    <i className="icons page-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Pages</p>
@@ -389,12 +382,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                  <i className="icons event-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Events</p>
@@ -417,12 +405,7 @@ export default function HomePage({isLogin}){
               "
                 >
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png"
-                      alt="icon from fb"
-                      className="rounded-circle"
-                      style={{ width: 48, height: 48, objectFit: "cover" }}
-                    />
+                    <i className="icons friend-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Friends</p>
@@ -1902,7 +1885,7 @@ export default function HomePage({isLogin}){
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <a
-                    href="./index.html"
+                    onClick={()=>isLogin(false)}
                     className="d-flex text-decoration-none text-dark"
                   >
                     <i className="fas fa-cog bg-gray p-2 rounded-circle" />
@@ -3052,12 +3035,7 @@ export default function HomePage({isLogin}){
             "
               >
                 <div className="p-2">
-                  <img
-                    src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png"
-                    alt="from fb"
-                    className="rounded-circle"
-                    style={{ width: 38, height: 38, objectFit: "cover" }}
-                  />
+                  <i className="icons friend-icon"></i>
                 </div>
                 <div>
                   <p className="m-0">Friends</p>
@@ -3075,12 +3053,7 @@ export default function HomePage({isLogin}){
             "
               >
                 <div className="p-2">
-                  <img
-                    src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Im_0d7HFH4n.png"
-                    alt="from fb"
-                    className="rounded-circle"
-                    style={{ width: 38, height: 38, objectFit: "cover" }}
-                  />
+                  <i className="icons group-icon"></i>
                 </div>
                 <div>
                   <p className="m-0">Groups</p>
@@ -3105,12 +3078,7 @@ export default function HomePage({isLogin}){
               >
                 <div className="d-flex align-items-center justify-content-evenly">
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/0gH3vbvr8Ee.png"
-                      alt="from fb"
-                      className="rounded-circle"
-                      style={{ width: 38, height: 38, objectFit: "cover" }}
-                    />
+                    <i className="icons page-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Pages</p>
@@ -3131,12 +3099,7 @@ export default function HomePage({isLogin}){
               >
                 <div className="d-flex align-items-center justify-content-evenly">
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/MN44Sm-CTHN.png"
-                      alt="from fb"
-                      className="rounded-circle"
-                      style={{ width: 38, height: 38, objectFit: "cover" }}
-                    />
+                  <i className="icons marketplace-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Marketplace</p>
@@ -3157,12 +3120,7 @@ export default function HomePage({isLogin}){
               >
                 <div className="d-flex align-items-center justify-content-evenly">
                   <div className="p-2">
-                    <img
-                      src="https://static.xx.fbcdn.net/rsrc.php/v3/y-/r/FhOLTyUFKwf.png"
-                      alt="from fb"
-                      className="rounded-circle"
-                      style={{ width: 38, height: 38, objectFit: "cover" }}
-                    />
+                  <i className="icons watch-icon"></i>
                   </div>
                   <div>
                     <p className="m-0">Watch</p>
@@ -3242,16 +3200,7 @@ export default function HomePage({isLogin}){
                     "
                       >
                         <div className="p-2">
-                          <img
-                            src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png"
-                            alt="from fb"
-                            className="rounded-circle"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
+                          <i className="icons event-icon"></i>
                         </div>
                         <div>
                           <p className="m-0">Events</p>
@@ -3268,16 +3217,7 @@ export default function HomePage({isLogin}){
                     "
                       >
                         <div className="p-2">
-                          <img
-                            src="https://static.xx.fbcdn.net/rsrc.php/v3/yo/r/hLkEFzsCyXC.png"
-                            alt="from fb"
-                            className="rounded-circle"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
+                          <i className="icons newfeed-icon"></i>
                         </div>
                         <div>
                           <p className="m-0">Newsfeed</p>
@@ -3690,16 +3630,7 @@ export default function HomePage({isLogin}){
                     "
                       >
                         <div className="p-2">
-                          <img
-                            src="https://source.unsplash.com/random/6"
-                            alt="from fb"
-                            className="rounded border border-1 border-secondary"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
+                        <i className="icons newfeed-icon"></i>
                         </div>
                         <div>
                           <p className="m-0">Newsfeed</p>
@@ -4054,7 +3985,7 @@ export default function HomePage({isLogin}){
             <hr />
             {/* actions */}
             <div className="d-flex flex-column flex-lg-row mt-3">
-              {/* a 1 */}
+              {/* a 1 live-video */}
               <div
                 className="
               dropdown-item
@@ -4068,7 +3999,7 @@ export default function HomePage({isLogin}){
                 <i className="fas fa-video me-2 text-danger" />
                 <p className="m-0 text-muted">Live Video</p>
               </div>
-              {/* a 2 */}
+              {/* a 2 photo-video */}
               <div
                 className="
               dropdown-item
@@ -4082,7 +4013,7 @@ export default function HomePage({isLogin}){
                 <i className="fas fa-photo-video me-2 text-success" />
                 <p className="m-0 text-muted">Photo/Video</p>
               </div>
-              {/* a 3 */}
+              {/* a 3 feelling activity */}
               <div
                 className="
               dropdown-item
@@ -4330,528 +4261,11 @@ export default function HomePage({isLogin}){
             </div>
           </div>
           {/* posts */}
-          {/* p 1 */}
-          <div className="bg-white p-4 rounded shadow mt-3">
-            {/* author */}
-            <div className="d-flex justify-content-between">
-              {/* avatar */}
-              <div className="d-flex">
-                <img
-                  src="https://source.unsplash.com/collection/happy-people"
-                  alt="avatar"
-                  className="rounded-circle me-2"
-                  style={{ width: 38, height: 38, objectFit: "cover" }}
-                />
-                <div>
-                  <p className="m-0 fw-bold">John</p>
-                  <span className="text-muted fs-7">July 17 at 1:23 pm</span>
-                </div>
-              </div>
-              {/* edit */}
-              <i
-                className="fas fa-ellipsis-h"
-                type="button"
-                id="post1Menu"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              />
-              {/* edit menu */}
-              <ul
-                className="dropdown-menu border-0 shadow"
-                aria-labelledby="post1Menu"
-              >
-                <li className="d-flex align-items-center">
-                  <a
-                    className="
-                  dropdown-item
-                  d-flex
-                  justify-content-around
-                  align-items-center
-                  fs-7
-                "
-                    href="#"
-                  >
-                    Edit Post
-                  </a>
-                </li>
-                <li className="d-flex align-items-center">
-                  <a
-                    className="
-                  dropdown-item
-                  d-flex
-                  justify-content-around
-                  align-items-center
-                  fs-7
-                "
-                    href="#"
-                  >
-                    Delete Post
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/* post content */}
-            <div className="mt-3">
-              {/* content */}
-              <div>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae
-                  fuga incidunt consequatur tenetur doloremque officia corrupti
-                  provident tempore vitae labore?
-                </p>
-                <img
-                  src="https://source.unsplash.com/random/12"
-                  alt="post image"
-                  className="img-fluid rounded"
-                />
-              </div>
-              {/* likes & comments */}
-              <div className="post__comment mt-3 position-relative">
-                {/* likes */}
-                <div
-                  className="
-                d-flex
-                align-items-center
-                top-0
-                start-0
-                position-absolute
-              "
-                  style={{ height: 50, zIndex: 5 }}
-                >
-                  <div className="me-2">
-                    <i className="text-primary fas fa-thumbs-up" />
-                    <i className="text-danger fab fa-gratipay" />
-                    <i className="text-warning fas fa-grin-squint" />
-                  </div>
-                  <p className="m-0 text-muted fs-7">Phu, Tuan, and 3 others</p>
-                </div>
-                {/* comments start*/}
-                <div className="accordion" id="accordionExample">
-                  <div className="accordion-item border-0">
-                    {/* comment collapse */}
-                    <h2 className="accordion-header" id="headingTwo">
-                      <div
-                        className="
-                      accordion-button
-                      collapsed
-                      pointer
-                      d-flex
-                      justify-content-end
-                    "
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsePost1"
-                        aria-expanded="false"
-                        aria-controls="collapsePost1"
-                      >
-                        <p className="m-0">2 Comments</p>
-                      </div>
-                    </h2>
-                    <hr />
-                    {/* comment & like bar */}
-                    <div className="d-flex justify-content-around">
-                      <div
-                        className="
-                      dropdown-item
-                      rounded
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      pointer
-                      text-muted
-                      p-1
-                    "
-                      >
-                        <i className="fas fa-thumbs-up me-3" />
-                        <p className="m-0">Like</p>
-                      </div>
-                      <div
-                        className="
-                      dropdown-item
-                      rounded
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      pointer
-                      text-muted
-                      p-1
-                    "
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsePost1"
-                        aria-expanded="false"
-                        aria-controls="collapsePost1"
-                      >
-                        <i className="fas fa-comment-alt me-3" />
-                        <p className="m-0">Comment</p>
-                      </div>
-                    </div>
-                    {/* comment expand */}
-                    <div
-                      id="collapsePost1"
-                      className="accordion-collapse collapse"
-                      aria-labelledby="headingTwo"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <hr />
-                      <div className="accordion-body">
-                        {/* comment 1 */}
-                        <div className="d-flex align-items-center my-1">
-                          {/* avatar */}
-                          <img
-                            src="https://source.unsplash.com/collection/happy-people"
-                            alt="avatar"
-                            className="rounded-circle me-2"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
-                          {/* comment text */}
-                          <div className="p-3 rounded comment__input w-100">
-                            {/* comment menu of author */}
-                            <div className="d-flex justify-content-end">
-                              {/* icon */}
-                              <i
-                                className="fas fa-ellipsis-h text-blue pointer"
-                                id="post1CommentMenuButton"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              />
-                              {/* menu */}
-                              <ul
-                                className="dropdown-menu border-0 shadow"
-                                aria-labelledby="post1CommentMenuButton"
-                              >
-                                <li className="d-flex align-items-center">
-                                  <a
-                                    className="
-                                  dropdown-item
-                                  d-flex
-                                  justify-content-around
-                                  align-items-center
-                                  fs-7
-                                "
-                                    href="#"
-                                  >
-                                    Edit Comment
-                                  </a>
-                                </li>
-                                <li className="d-flex align-items-center">
-                                  <a
-                                    className="
-                                  dropdown-item
-                                  d-flex
-                                  justify-content-around
-                                  align-items-center
-                                  fs-7
-                                "
-                                    href="#"
-                                  >
-                                    Delete Comment
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <p className="fw-bold m-0">John</p>
-                            <p className="m-0 fs-7 bg-gray p-2 rounded">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit.
-                            </p>
-                          </div>
-                        </div>
-                        {/* comment 2 */}
-                        <div className="d-flex align-items-center my-1">
-                          {/* avatar */}
-                          <img
-                            src="https://source.unsplash.com/random/2"
-                            alt="avatar"
-                            className="rounded-circle me-2"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
-                          {/* comment text */}
-                          <div className="p-3 rounded comment__input w-100">
-                            <p className="fw-bold m-0">Jerry</p>
-                            <p className="m-0 fs-7 bg-gray p-2 rounded">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit.
-                            </p>
-                          </div>
-                        </div>
-                        {/* create comment */}
-                        <form className="d-flex my-1">
-                          {/* avatar */}
-                          <div>
-                            <img
-                              src="https://source.unsplash.com/collection/happy-people"
-                              alt="avatar"
-                              className="rounded-circle me-2"
-                              style={{
-                                width: 38,
-                                height: 38,
-                                objectFit: "cover"
-                              }}
-                            />
-                          </div>
-                          {/* input */}
-                          <input
-                            type="text"
-                            className="form-control border-0 rounded-pill bg-gray"
-                            placeholder="Write a comment"
-                          />
-                        </form>
-                        {/* end */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
+          {/* p 1 -post */}
+          <Post/>
           {/* p 2 */}
-          <div className="bg-white p-4 rounded shadow mt-3">
-            {/* author */}
-            <div className="d-flex justify-content-between">
-              {/* avatar */}
-              <div className="d-flex">
-                <img
-                  src="https://source.unsplash.com/random/1"
-                  alt="avatar"
-                  className="rounded-circle me-2"
-                  style={{ width: 38, height: 38, objectFit: "cover" }}
-                />
-                <div>
-                  <p className="m-0 fw-bold">Mike</p>
-                  <span className="text-muted fs-7">May 24 at 1:23 pm</span>
-                </div>
-              </div>
-            </div>
-            {/* post content */}
-            <div className="mt-3">
-              {/* content */}
-              <div>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae
-                  fuga incidunt consequatur tenetur doloremque officia corrupti
-                  provident tempore vitae labore?
-                </p>
-                <img
-                  src="https://source.unsplash.com/random/13"
-                  alt="post image"
-                  className="img-fluid rounded"
-                />
-              </div>
-              {/* likes & comments */}
-              <div className="post__comment mt-3 position-relative">
-                {/* likes */}
-                <div
-                  className="
-                d-flex
-                align-items-center
-                top-0
-                start-0
-                position-absolute
-              "
-                  style={{ height: 50, zIndex: 5 }}
-                >
-                  <div className="me-2">
-                    <i className="text-primary fas fa-thumbs-up" />
-                    <i className="text-danger fab fa-gratipay" />
-                    <i className="text-warning fas fa-grin-squint" />
-                  </div>
-                  <p className="m-0 text-muted fs-7">Phu, Tuan, and 3 others</p>
-                </div>
-                {/* comments start*/}
-                <div className="accordion" id="accordionExample">
-                  <div className="accordion-item border-0">
-                    {/* comment collapse */}
-                    <h2 className="accordion-header" id="headingTwo">
-                      <div
-                        className="
-                      accordion-button
-                      collapsed
-                      pointer
-                      d-flex
-                      justify-content-end
-                    "
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsePost1"
-                        aria-expanded="false"
-                        aria-controls="collapsePost1"
-                      >
-                        <p className="m-0">2 Comments</p>
-                      </div>
-                    </h2>
-                    <hr />
-                    {/* comment & like bar */}
-                    <div className="d-flex justify-content-around">
-                      <div
-                        className="
-                      dropdown-item
-                      rounded
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      pointer
-                      text-muted
-                      p-1
-                    "
-                      >
-                        <i className="fas fa-thumbs-up me-3" />
-                        <p className="m-0">Like</p>
-                      </div>
-                      <div
-                        className="
-                      dropdown-item
-                      rounded
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      pointer
-                      text-muted
-                      p-1
-                    "
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsePost1"
-                        aria-expanded="false"
-                        aria-controls="collapsePost1"
-                      >
-                        <i className="fas fa-comment-alt me-3" />
-                        <p className="m-0">Comment</p>
-                      </div>
-                    </div>
-                    {/* comment expand */}
-                    <div
-                      id="collapsePost1"
-                      className="accordion-collapse collapse"
-                      aria-labelledby="headingTwo"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <hr />
-                      <div className="accordion-body">
-                        {/* comment 1 */}
-                        <div className="d-flex align-items-center my-1">
-                          {/* avatar */}
-                          <img
-                            src="https://source.unsplash.com/collection/happy-people"
-                            alt="avatar"
-                            className="rounded-circle me-2"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
-                          {/* comment text */}
-                          <div className="p-3 rounded comment__input w-100">
-                            {/* comment menu of author */}
-                            <div className="d-flex justify-content-end">
-                              {/* icon */}
-                              <i
-                                className="fas fa-ellipsis-h text-blue pointer"
-                                id="post1CommentMenuButton"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                              />
-                              {/* menu */}
-                              <ul
-                                className="dropdown-menu border-0 shadow"
-                                aria-labelledby="post1CommentMenuButton"
-                              >
-                                <li className="d-flex align-items-center">
-                                  <a
-                                    className="
-                                  dropdown-item
-                                  d-flex
-                                  justify-content-around
-                                  align-items-center
-                                  fs-7
-                                "
-                                    href="#"
-                                  >
-                                    Edit Comment
-                                  </a>
-                                </li>
-                                <li className="d-flex align-items-center">
-                                  <a
-                                    className="
-                                  dropdown-item
-                                  d-flex
-                                  justify-content-around
-                                  align-items-center
-                                  fs-7
-                                "
-                                    href="#"
-                                  >
-                                    Delete Comment
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            <p className="fw-bold m-0">John</p>
-                            <p className="m-0 fs-7 bg-gray p-2 rounded">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit.
-                            </p>
-                          </div>
-                        </div>
-                        {/* comment 2 */}
-                        <div className="d-flex align-items-center my-1">
-                          {/* avatar */}
-                          <img
-                            src="https://source.unsplash.com/random/2"
-                            alt="avatar"
-                            className="rounded-circle me-2"
-                            style={{
-                              width: 38,
-                              height: 38,
-                              objectFit: "cover"
-                            }}
-                          />
-                          {/* comment text */}
-                          <div className="p-3 rounded comment__input w-100">
-                            <p className="fw-bold m-0">Jerry</p>
-                            <p className="m-0 fs-7 bg-gray p-2 rounded">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit.
-                            </p>
-                          </div>
-                        </div>
-                        {/* create comment */}
-                        <form className="d-flex my-1">
-                          {/* avatar */}
-                          <div>
-                            <img
-                              src="https://source.unsplash.com/collection/happy-people"
-                              alt="avatar"
-                              className="rounded-circle me-2"
-                              style={{
-                                width: 38,
-                                height: 38,
-                                objectFit: "cover"
-                              }}
-                            />
-                          </div>
-                          {/* input */}
-                          <input
-                            type="text"
-                            className="form-control border-0 rounded-pill bg-gray"
-                            placeholder="Write a comment"
-                          />
-                        </form>
-                        {/* end */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
+          <Post/>
+          
         </div>
       </div>
       {/* ================= Chatbar ================= */}
@@ -6273,6 +5687,5 @@ export default function HomePage({isLogin}){
     <i className="fas fa-edit bg-white rounded-circle p-3 shadow" />
   </div>
 </div>
-
       )
 }

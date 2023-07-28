@@ -4,9 +4,10 @@ import HomePage from "./HomePage/HomePage";
 
 export default function App() {
   const [login, isLogin] = useState(false);
+  const [userLogin, setUserLogin] = useState(null);
   return (
     <>
-    {!login ? <LoginPage {...{isLogin}}/>:<HomePage {...{isLogin}}/>}
+    {!login ? <LoginPage {...{isLogin,setUserLogin}}/>:<HomePage {...{isLogin,userLogin}}/>}
     </>
   )
 }
