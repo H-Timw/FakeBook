@@ -1,17 +1,14 @@
-package com.kits.flexbook.util;
+package com.kits.fakebook.util;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.github.javafaker.Faker;
-import com.kits.flexbook.model.Post;
-import com.kits.flexbook.model.User;
-import com.kits.flexbook.repository.PostRepository;
-import com.kits.flexbook.repository.UserRepository;
+import com.kits.fakebook.model.Post;
+import com.kits.fakebook.model.User;
+import com.kits.fakebook.repository.PostRepository;
+import com.kits.fakebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 

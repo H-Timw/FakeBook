@@ -1,4 +1,4 @@
-package com.kits.flexbook.model;
+package com.kits.fakebook.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

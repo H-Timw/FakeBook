@@ -1,9 +1,9 @@
-package com.kits.flexbook.controller;
+package com.kits.fakebook.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.kits.flexbook.model.Post;
-import com.kits.flexbook.repository.PostRepository;
+import com.kits.fakebook.model.Post;
+import com.kits.fakebook.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

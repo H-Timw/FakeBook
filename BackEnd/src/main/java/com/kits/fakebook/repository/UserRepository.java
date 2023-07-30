@@ -1,6 +1,6 @@
-package com.kits.flexbook.repository;
+package com.kits.fakebook.repository;
 
-import com.kits.flexbook.model.User;
+import com.kits.fakebook.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,14 +1,13 @@
-package com.kits.flexbook.controller;
+package com.kits.fakebook.controller;
 
-import com.kits.flexbook.model.LoginRequest;
-import com.kits.flexbook.model.User;
-import com.kits.flexbook.repository.UserRepository;
+import com.kits.fakebook.model.LoginRequest;
+import com.kits.fakebook.model.User;
+import com.kits.fakebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:5173", maxAge = 3600)
 @RestController

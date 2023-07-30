@@ -1,4 +1,4 @@
-package com.kits.flexbook.model;
+package com.kits.fakebook.model;
 
 public class LoginRequest {
     String username;

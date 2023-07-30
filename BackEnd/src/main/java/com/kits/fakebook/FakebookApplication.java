@@ -1,4 +1,4 @@
-package com.kits.flexbook;
+package com.kits.fakebook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

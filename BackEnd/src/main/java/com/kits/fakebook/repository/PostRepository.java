@@ -1,5 +1,5 @@
-package com.kits.flexbook.repository;
-import com.kits.flexbook.model.Post;
+package com.kits.fakebook.repository;
+import com.kits.fakebook.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
