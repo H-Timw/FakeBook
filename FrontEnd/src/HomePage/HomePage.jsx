@@ -140,12 +140,12 @@ export default function HomePage({isLogin,userLogin}){
           {/* avatar */}
           <div className="align-items-center justify-content-center d-none d-xl-flex">
             <img
-              src="https://source.unsplash.com/collection/happy-people"
+              src={userLogin.profilePicture}
               className="rounded-circle me-2"
               alt="avatar"
               style={{ width: 38, height: 38, objectFit: "cover" }}
             />
-            <p className="m-0">John</p>
+            <p className="m-0"style={{textTransform:'capitalize'}}>{userLogin.username.split(".")[0]}</p>
           </div>
           {/* main menu */}
           <div
@@ -915,6 +915,8 @@ export default function HomePage({isLogin,userLogin}){
               </div>
             </li>
             {/* search */}
+
+            {/* avatart of friend */}
             <li className="p-1">
               <div
                 className="input-group-text bg-gray border-0 rounded-pill"
@@ -1374,13 +1376,13 @@ export default function HomePage({isLogin,userLogin}){
             {/* avatar */}
             <li className="dropdown-item p-1 rounded d-flex" type="button">
               <img
-                src="https://source.unsplash.com/collection/happy-people"
+                src={userLogin.profilePicture}
                 alt="avatar"
                 className="rounded-circle me-2"
                 style={{ width: 45, height: 45, objectFit: "cover" }}
               />
               <div>
-                <p className="m-0">John</p>
+                <p className="m-0"style={{textTransform:'capitalize'}}>{userLogin.username.split(".")[0]}</p>
                 <p className="m-0 text-muted">See your profile</p>
               </div>
             </li>
@@ -3012,14 +3014,14 @@ export default function HomePage({isLogin,userLogin}){
               >
                 <div className="p-2">
                   <img
-                    src="https://source.unsplash.com/collection/happy-people"
+                    src={userLogin.profilePicture}
                     alt="avatar"
                     className="rounded-circle me-2"
                     style={{ width: 38, height: 38, objectFit: "cover" }}
                   />
                 </div>
                 <div>
-                  <p className="m-0">John</p>
+                  <p className="m-0"style={{textTransform:'capitalize'}}>{userLogin.username.split(".")[0]}</p>
                 </div>
               </a>
             </li>
@@ -3666,7 +3668,7 @@ export default function HomePage({isLogin,userLogin}){
               style={{ width: "6em", height: 190 }}
             >
               <img
-                src="https://source.unsplash.com/collection/happy-people"
+                src={userLogin.profilePicture}
                 className="card-img-top"
                 alt="story posts"
                 style={{ minHeight: 125, objectFit: "cover" }}
@@ -3786,7 +3788,7 @@ export default function HomePage({isLogin,userLogin}){
             </div>
           </div>
           {/* create post */}
-          <CreatePost/>
+          <CreatePost {...{userLogin,posts,getPosts}}/>
           {/* create room */}
           <div
             className="
@@ -4020,7 +4022,7 @@ export default function HomePage({isLogin,userLogin}){
           </div>
           {/* posts */}
           {
-            posts && users && posts.map((post,index)=>{
+            posts && users && posts.sort((a,b)=>{a.updatedAt - b.updatedAt}).map((post,index)=>{
               return (
                 <Post key={index} {...{post}}/>
               )
