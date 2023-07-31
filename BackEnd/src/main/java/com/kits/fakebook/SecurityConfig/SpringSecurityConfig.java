@@ -1,48 +1,31 @@
-////import com.kits.fakebook.model.User;
-//import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.Customizer;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.core.userdetails.User;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-//import org.springframework.security.web.SecurityFilterChain;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //
 //@Configuration
-//public class SpringSecurityConfig {
-//    @Bean
-//    public static PasswordEncoder passwordEncoder(){
-//        return new BCryptPasswordEncoder();
+//@EnableWebSecurity
+//public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .requestMatchers("/public/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/dashboard")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
 //    }
 //
-//    @Bean
-//    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//    //phân quyền user admin,...
-//        http.csrf().disable()
-//                .authorizeHttpRequests((authorize) -> {
-//                    authorize.anyRequest().authenticated();
-//                }).httpBasic(Customizer.withDefaults());
-//        return http.build();
-//    }
-//
-//    @Bean
-//    public UserDetailsService userDetailsService(){
-//
-//        UserDetails ramesh = User.builder()
-//                .username("ramesh")
-//                .password(passwordEncoder().encode("password"))
-//                .roles("USER")
-//                .build();
-//
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password(passwordEncoder().encode("admin"))
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(ramesh, admin);
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password("{noop}password").roles("USER")
+//                .and()
+//                .withUser("admin").password("{noop}password").roles("USER", "ADMIN");
 //    }
 //}
