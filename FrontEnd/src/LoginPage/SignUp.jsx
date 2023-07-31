@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 // import { format } from 'date-fns'; format day
@@ -9,6 +10,7 @@ export default function SignUp() {
   const [gender, setGender] = useState("male");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,20 +19,32 @@ export default function SignUp() {
       method: "POST",
       body: JSON.stringify(
         {
-          "username": firstName.toLowerCase() +"."+ lastName.toLowerCase(),
+          "username": username,
           "email": email,
           "password": password,
           "gender": gender,
           "profilePicture": "https://source.unsplash.com/random/0",
           "bio": "Just a normal person",
+          "firstname": firstName.toLowerCase(),
+          "lastname": lastName.toLowerCase(),
         }
       ),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    .then(res => res.text())
+    .then(data => {
+      switch (data)
+      {
+        case "success":
+          window.alert(`SignUp Successfully\nUsername: ${username}\nPassword: ${password}`);
+          break;
+        case "samename":
+          window.alert("Sign Up Failed, Username already taken by another user, please try again!");
+          break;
+      }
+    })
     .catch(err => console.log(err));
   }
   return (
@@ -60,7 +74,8 @@ export default function SignUp() {
                                     </div>
                                     {/* email & pass */}
                                     <input type="email" className="form-control my-3" placeholder="Email address" onChange={(e)=>setEmail(e.target.value)} required/>
-                                    <input type="password" className="form-control my-3" placeholder="New password" onChange={(e)=>setPassword(e.target.value)} required/>
+                                    <input type="text" className="form-control my-3" placeholder="Username" onChange={(e)=>setUserName(e.target.value)} required/>
+                                    <input type="password" className="form-control my-3" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} required/>
                                     {/* DOB */}
                                     <div className="row my-3">
                                         <span className="text-muted fs-7">Date of birth <i className="fas fa-question-circle" data-bs-toggle="popover" type="button" data-bs-content="And here's some amazing content. It's very engaging. Right?"></i></span>

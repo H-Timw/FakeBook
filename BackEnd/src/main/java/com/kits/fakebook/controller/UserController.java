@@ -53,9 +53,9 @@ public class UserController {
             newUser.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
             userRepository.save(newUser);
             //check password strongly, username ruler or st here
-            return "SignUp Successfully";
+            return "success";
         }else{
-            return "Sign Up Failed, Username already taken by another user, please try again!";
+            return "samename";
         }
     }
 

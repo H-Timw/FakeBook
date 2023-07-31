@@ -7,14 +7,18 @@ public class SignUpRequest {
     private String gender;
     private String profilePicture;
     private String bio;
+    private String firstName;
+    private String lastName;
 
-    public SignUpRequest(String username, String email, String password, String gender, String profilePicture, String bio) {
+    public SignUpRequest(String username, String email, String password, String gender, String profilePicture, String bio, String firstName, String lastName) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.profilePicture = profilePicture;
         this.bio = bio;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public SignUpRequest() {
@@ -66,5 +70,20 @@ public class SignUpRequest {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

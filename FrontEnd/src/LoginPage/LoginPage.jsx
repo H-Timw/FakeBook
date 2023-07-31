@@ -17,13 +17,16 @@ export default function LoginPage({isLogin,setUserLogin}) {
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
-    }).then( res => res.json())
+    })
+    .then(res => res.text())
+    .then(data => data.length ==0 ? null : JSON.parse(data) )
     .then(user => {
             if(user!=null){
                 setUserLogin(user);
                 isLogin(true);
             }else{
-                isLogin(false)
+                isLogin(false);
+                window.alert("Login failed, please try again or SignUp");
             }
         }
     )
