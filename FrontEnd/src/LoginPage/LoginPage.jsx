@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
-
+import SignUp from "./SignUp";
 /* eslint-disable react/no-unescaped-entities */
 export default function LoginPage({isLogin,setUserLogin}) {
-  const [customGender, setCustomGender] = useState(false);
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const checkLogin = async function(){
@@ -63,104 +62,7 @@ export default function LoginPage({isLogin,setUserLogin}) {
                     <button className="btn btn-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#createModal">Create New Account</button>
                 </div>
                 {/* create modal */}
-                <div className="modal fade" id="createModal" tabIndex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            {/* head */}
-                            <div className="modal-header">
-                                <div>
-                                    <h2 className="modal-title" id="exampleModalLabel">Sign Up</h2>
-                                    <span className="text-muted fs-7">It's quick and easy.</span>
-                                </div>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            {/* body */}
-                            <div className="modal-body">
-                                <form>
-                                    {/* names */}
-                                    <div className="row">
-                                        <div className="col">
-                                            <input type="text" className="form-control" placeholder="First name" />
-                                        </div>
-                                        <div className="col">
-                                            <input type="text" className="form-control" placeholder="Surname" />
-                                        </div>
-                                    </div>
-                                    {/* email & pass */}
-                                    <input type="email" className="form-control my-3" placeholder="Mobile number or email address" />
-                                    <input type="password" className="form-control my-3" placeholder="New password" />
-                                    {/* DOB */}
-                                    <div className="row my-3">
-                                        <span className="text-muted fs-7">Date of birth <i className="fas fa-question-circle" data-bs-toggle="popover" type="button" data-bs-content="And here's some amazing content. It's very engaging. Right?"></i></span>
-                                        <div className="col">
-                                            <select className="form-select">
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div className="col">
-                                            <select className="form-select">
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div className="col">
-                                            <select className="form-select">
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    {/* gender */}
-                                    <div className="row my-3">
-                                        <span className="text-muted fs-7">Gender <i className="fas fa-question-circle" data-bs-toggle="popover" type="button" data-bs-content="And here's some amazing content. It's very engaging. Right?"></i></span>
-                                        <div className="col">
-                                            <div className="border rounded p-2">
-                                                <label className="form-check-label" htmlFor="flexRadioDefault1">Male </label>
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={()=>{setCustomGender(false)}}/>
-                                            </div>
-                                        </div>
-                                        <div className="col">
-                                            <div className="border rounded p-2">
-                                                <label className="form-check-label" htmlFor="flexRadioDefault2">Female </label>
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={()=>{setCustomGender(false)}}/>
-                                            </div>
-                                        </div>
-                                        <div className="col">
-                                            <div className="border rounded p-2">
-                                                <label className="form-check-label" htmlFor="flexRadioDefault3">Custom </label>
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={()=>{setCustomGender(true)}}/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* gender select */}
-                                    <div style={{display: customGender?'block':'none'}} id="genderSelect">
-                                        <select className="form-select">
-                                            <option value="1">Gay</option>
-                                            <option value="2">Less</option>
-                                            <option value="3">Hidden</option>
-                                        </select>
-                                        <div className="my-3">
-                                            <span className="text-muted fs-7">Your pronoun is visible to everyone.</span>
-                                            <input type="text" className="form-control" placeholder="Gender (optional)" />
-                                        </div>
-                                    </div>
-                                    {/* disclaimer */}
-                                    <div>
-                                        <span className="text-muted fs-7">By clicking Sign Up, you agree to our Terms, Data Policy....</span>
-                                    </div>
-                                    {/* btn */}
-                                    <div className="text-center mt-3">
-                                        <button type="button" className="btn btn-success btn-lg" data-bs-dismiss="modal">Sign Up</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <SignUp/>
                 {/* modal end */}
             </div>
             {/* tag */}

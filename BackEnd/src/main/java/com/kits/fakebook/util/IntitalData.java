@@ -36,7 +36,7 @@ public class IntitalData implements CommandLineRunner {
         admin.setUsername("hao.doanminh");
         admin.setEmail("timw051201@gmail.com");
         admin.setPassword("8469");
-        admin.setBio("Just a nor mal person");
+        admin.setBio("Just a normal person");
         admin.setProfilePicture("https://i.ibb.co/fHH7t9m/359686976-265376716112236-2802863176676756692-n.jpg");
         admin.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         admin.setUpdatedAt(new Timestamp(System.currentTimeMillis()));

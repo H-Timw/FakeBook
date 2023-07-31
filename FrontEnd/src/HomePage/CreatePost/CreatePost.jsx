@@ -27,6 +27,9 @@ export default function CreatePost({ userLogin, posts, getPosts }) {
     )
     .catch((err) => console.log(err));
   };
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
   return (
     <div className="bg-white p-3 mt-3 rounded border shadow">
       {/* avatar */}
@@ -47,7 +50,7 @@ export default function CreatePost({ userLogin, posts, getPosts }) {
         bg-gray
         pointer"
         disabled
-        placeholder="What's on your mind, John?"
+        placeholder={`What's on your mind, ${capitalizeFirstLetter(userLogin.username.split(".")[0])}?`}
         data-bs-toggle="modal"
         data-bs-target="#createModal" />
       </div>

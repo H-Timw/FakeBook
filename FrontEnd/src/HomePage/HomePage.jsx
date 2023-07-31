@@ -448,7 +448,10 @@ export default function HomePage({isLogin,userLogin}){
                     <i className="fas fa-edit" />
                   </div>
                   <div>
-                    <p className="m-0">Post</p>
+                    <p className="m-0"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createModal"
+                    >Post</p>
                   </div>
                 </a>
               </li>
